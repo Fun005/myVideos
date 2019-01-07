@@ -158,12 +158,13 @@ export const constantRouterMap = [{
             hiddenL: true,
             component: () =>
                 import ('@/views/videos_manage/components/video_list'),
-            meta: { title: '视频管理' }
+            meta: { title: '视频列表' }
         }, {
             path: 'edit_video',
             name: 'EditVideo',
+            hidden: true,
             component: () =>
-                import ('@/views/videos_manage/components/edit_video'),
+                import ('@/views/videos_manage/components/video_edit'),
             meta: { title: '视频管理' }
         }]
     },

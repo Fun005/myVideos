@@ -5,10 +5,11 @@
       :default-active="$route.path"
       :collapse="isCollapse"
       mode="vertical"
-      background-color="#304156"
-      text-color="#bfcbd9"
-      active-text-color="#409EFF"
+      background-color="rgb(241, 241, 241)"
+      text-color="#303133"
+      active-text-color="#303133"
     >
+      <!-- active-text-color="#f5f7fa" -->
       <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path"/>
     </el-menu>
   </el-scrollbar>
