@@ -1,5 +1,5 @@
 <template>
-  <div class="video-manage"/>
+  <div class="album-manage"/>
 </template>
 <script>
 export default {
