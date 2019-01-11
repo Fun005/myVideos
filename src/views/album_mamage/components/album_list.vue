@@ -30,6 +30,7 @@
         <el-form-item style="float: right;">
           <el-button class="green-btn" icon="el-icon-search" @click="onSubmit">查找</el-button>
           <el-button @click="resetSubmit">清空查询项</el-button>
+          <el-button type="primary" round @click="createNewAlbum">新建专辑</el-button>
         </el-form-item>
       </el-form>
     </header>
@@ -44,9 +45,9 @@
           :width="col.width"/>
         <el-table-column prop="" label="操作" width="300">
           <template slot-scope="scope">
-            <el-button type="text" @click="optVideo(scope.row)">管理</el-button>  |
+            <!-- <el-button type="text" @click="optVideo(scope.row)">管理</el-button>  | -->
             <el-button type="text" @click="editVideo(scope.row)">编辑</el-button>  |
-            <el-button type="text" @click="spreadVideo(scope.row)">推广专辑</el-button>  |
+            <!-- <el-button type="text" @click="spreadVideo(scope.row)">推广专辑</el-button>  | -->
             <el-button type="text" class="del-opt" @click="deleteVideo(scope.row)">删除</el-button>
           </template>
         </el-table-column>
@@ -85,34 +86,39 @@ export default {
       columns: [
         {
           id: 1,
-          label: '专辑基本信息',
-          width: '300',
+          label: '基本信息',
+          width: '',
           prop: 'base_info'
         }, {
           id: 2,
-          label: '视频数量',
+          label: '时长',
           width: '',
           prop: 'duration'
         }, {
           id: 3,
-          label: '状态',
+          label: '分类',
           width: '',
           prop: 'status'
         }, {
           id: 4,
-          label: '分类',
+          label: '状态',
           width: '',
           prop: 'classification'
         }, {
           id: 5,
-          label: '创建时间',
+          label: '上传者',
           width: '',
           prop: 'upload_time'
         }, {
           id: 6,
-          label: '专辑收藏数',
+          label: '上传时间',
           width: '',
           prop: 'pub_time'
+        }, {
+          id: 7,
+          label: '分辨率',
+          width: '',
+          prop: ''
         }
         // {
         //   id: 7,

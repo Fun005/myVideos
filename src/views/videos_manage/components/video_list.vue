@@ -53,7 +53,7 @@
         <el-table-column prop="" label="操作">
           <template slot-scope="scope">
             <el-button type="text" @click="editVideo(scope.row)">编辑</el-button>  |
-            <el-button type="text" @click="spreadVideo(scope.row)">推广视频</el-button>  |
+            <!-- <el-button type="text" @click="spreadVideo(scope.row)">推广视频</el-button>  | -->
             <el-button type="text" class="del-opt" @click="deleteVideo(scope.row)">删除</el-button>
           </template>
         </el-table-column>
