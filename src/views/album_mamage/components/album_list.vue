@@ -1,6 +1,6 @@
 <template>
   <div class="album-list">
-    <header>
+    <header v-if="isListPage">
       <el-form :inline="true" v-model="searchForm" size="small">
         <el-form-item label="">
           <el-input v-model="searchForm.albumName" placeholder="专辑名称"/>
@@ -34,7 +34,25 @@
         </el-form-item>
       </el-form>
     </header>
+    <header v-else class="is-edit">
+      <div class="cover">
+        <img src="../../../assets/404_images/404.png" alt="">
+      </div>
+      <div class="video-info">
+        <div>
+          <el-input v-model="editObj.albumName" placeholder="" style="width: 300px;">
+            <el-button slot="append" icon="el-icon-edit"/>
+          </el-input>
+        </div>
+        <div>最后更新时间:</div>
+        <div><span>视频ID：</span>121465415</div>
+        <el-button @click="diyImg">自定义缩略图</el-button>
 
+      </div>
+      <div class="opt-btn">
+        <el-button @click="createVideo">添加视频</el-button>
+      </div>
+    </header>
     <div class="content">
       <el-table :data="albumTableData" border>
         <el-table-column
@@ -42,7 +60,8 @@
           :prop="col.prop"
           :key="col.id"
           :label="col.label"
-          :width="col.width"/>
+          :width="col.width"
+          :header-row-style="heaedrStyle" />
         <el-table-column prop="" label="操作" width="300">
           <template slot-scope="scope">
             <!-- <el-button type="text" @click="optVideo(scope.row)">管理</el-button>  | -->
@@ -68,12 +87,16 @@
 export default {
   data() {
     return {
+      isListPage: true,
       searchForm: {
         albumName: '',
         status: '',
         sort: '',
         albumType: '',
         pubDate: ''
+      },
+      editObj: {
+        albumName: ''
       },
       albumTableData: [{
         base_info: '基本信息fsd',
@@ -127,6 +150,9 @@ export default {
         //   prop: 'option'
         // }
       ],
+      heaedrStyle: {
+        'background-color': '#000'
+      },
 
       currentPage: 1, // 当前页码
       pageSize: 10, // 每页条数
@@ -148,12 +174,19 @@ export default {
       this.onSubmit()
     },
 
+    createNewAlbum() {},
+
+    createVideo() {},
+
+    diyImg() {},
+
     /**
      * 编辑专辑
      */
     editVideo(row) {
       console.log(row)
-      this.$router.push({ path: 'edit_album' })
+      // this.$router.push({ path: 'edit_album' })
+      this.isListPage = false
     },
 
     /**
@@ -226,6 +259,34 @@ export default {
     header {
       margin: 10px;
     }
+    .is-edit {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        padding-left: 20%;
+        margin-bottom: 20px;
+        .cover {
+          display: inline-block;
+          width: 300px;
+          img {
+            width: 300px;
+          }
+        }
+        .upload-demo {
+          width: 360px;
+          display: inline-block;
+        }
+        .video-info {
+          height: 170px;
+          line-height: 42px;
+        }
+        .opt-btn {
+          // display: inline-block;
+          float: right;
+          height: 0px;
+          line-height: 320px;
+        }
+      }
     .del-opt {
       color:#f56c6c;
     }

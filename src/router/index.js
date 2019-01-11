@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Vue from 'vue'
 import Router from 'vue-router'
 
@@ -45,53 +46,6 @@ export const constantRouterMap = [{
             },
             component: () =>
                 import ('@/views/dashboard/index')
-        }]
-    },
-
-    {
-        path: '/example',
-        component: Layout,
-        redirect: '/example/table',
-        name: 'Example',
-        meta: {
-            title: 'Example',
-            icon: 'example'
-        },
-        children: [{
-                path: 'table',
-                name: 'Table',
-                component: () =>
-                    import ('@/views/table/index'),
-                meta: {
-                    title: 'Table',
-                    icon: 'table'
-                }
-            },
-            {
-                path: 'tree',
-                name: 'Tree',
-                component: () =>
-                    import ('@/views/tree/index'),
-                meta: {
-                    title: 'Tree',
-                    icon: 'tree'
-                }
-            }
-        ]
-    },
-
-    {
-        path: '/form',
-        component: Layout,
-        children: [{
-            path: 'index',
-            name: 'Form',
-            component: () =>
-                import ('@/views/form/index'),
-            meta: {
-                title: 'Form',
-                icon: 'form'
-            }
         }]
     },
 
@@ -172,19 +126,52 @@ export const constantRouterMap = [{
     },
 
     {
-        path: '/youtube_download',
-        name: 'YoutubeDownload',
+        path: '/form',
         component: Layout,
-        redirect: '/youtube_download/youtube_download_index',
+        children: [{
+            path: 'index',
+            name: 'Form',
+            component: () =>
+                import ('@/views/form/index'),
+            meta: {
+                title: 'Form',
+                icon: 'form'
+            }
+        }]
+    },
+
+    {
+        path: '/download_video',
+        component: Layout,
+        redirect: '/download_video/index',
+        meta: {
+            title: '视频上传'
+        },
+        children: [{
+            path: 'index',
+            name: 'DownloadVideo',
+            hidden: true,
+            component: () =>
+                import ('@/views/download_video/index'),
+            meta: {
+                title: '视频上传'
+            }
+        }]
+    },
+
+    {
+        path: '/youtube',
+        component: Layout,
         meta: {
             title: 'YOUTUBE下载'
         },
+        redirect: '/youtube/youtube_download',
         children: [{
-            path: 'youtube_download_index',
-            name: 'YoutubeDownloadIndex',
-            hidden: true,
+            path: 'youtube_download',
+            name: 'YoutubeDownload',
             component: () =>
-                import ('@/views/youtube/components/youtube_download'),
+                import ('@/views/youtube/youtube_download'),
+            hidden: true,
             meta: {
                 title: 'YOUTUBE下载'
             }
@@ -197,8 +184,7 @@ export const constantRouterMap = [{
         component: Layout,
         redirect: '/video_manage/video_list',
         meta: {
-            title: '视频管理',
-            icon: ''
+            title: '视频管理'
         },
         children: [{
             path: 'video_list',
