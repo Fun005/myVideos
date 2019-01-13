@@ -54,6 +54,7 @@ export const constantRouterMap = [{
         component: Layout,
         redirect: '/nested/menu1',
         name: 'Nested',
+        hidden: true,
         meta: {
             title: 'Nested',
             icon: 'nested'
@@ -126,18 +127,19 @@ export const constantRouterMap = [{
     },
 
     {
-        path: '/download_video',
+        path: '/upload_video',
+        name: 'UploadVideo',
         component: Layout,
-        redirect: '/download_video/index',
+        redirect: '/upload_video/upload_index',
         meta: {
             title: '视频上传'
         },
         children: [{
-            path: 'index',
-            name: 'DownloadVideo',
+            path: 'upload_index',
+            name: 'UploadIndex',
             hidden: true,
             component: () =>
-                import ('@/views/download_video/index'),
+                import ('@/views/upload_video/upload'),
             meta: {
                 title: '视频上传'
             }
@@ -146,6 +148,7 @@ export const constantRouterMap = [{
 
     {
         path: '/youtube',
+        name: 'Youtube',
         component: Layout,
         meta: {
             title: 'YOUTUBE下载'
@@ -218,6 +221,26 @@ export const constantRouterMap = [{
                 import ('@/views/album_mamage/components/album_edit'),
             meta: {
                 title: '专辑编辑'
+            }
+        }]
+    },
+
+    {
+        path: '/channel',
+        name: 'Channel',
+        component: Layout,
+        meta: {
+            title: '频道管理'
+        },
+        redirect: '/channel/channel_manage',
+        children: [{
+            path: 'channel_manage',
+            name: 'ChannelManage',
+            component: () =>
+                import ('@/views/channel_manage/channel'),
+            hidden: true,
+            meta: {
+                title: '频道管理'
             }
         }]
     },
