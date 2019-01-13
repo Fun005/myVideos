@@ -201,7 +201,7 @@ export const constantRouterMap = [{
         component: Layout,
         redirect: '/album_mamage/album_list',
         meta: {
-            title: '专辑管理',
+            title: '',
             icon: ''
         },
         children: [{
@@ -240,7 +240,36 @@ export const constantRouterMap = [{
                 import ('@/views/channel_manage/channel'),
             hidden: true,
             meta: {
-                title: '频道管理'
+                title: ''
+            }
+        }]
+    },
+
+    {
+        path: '/user',
+        name: 'User',
+        component: Layout,
+        meta: {
+            title: '用户管理'
+        },
+        redirect: '/user/user_manage',
+        children: [{
+            path: 'user_manage',
+            name: 'UserManage',
+            component: () =>
+                import ('@/views/user_manage/user'),
+            hidden: true,
+            meta: {
+                title: ''
+            }
+        }, {
+            path: 'edit_user',
+            name: 'EditUser',
+            component: () =>
+                import ('@/views/user_manage/edit_user'),
+            hidden: true,
+            meta: {
+                title: ''
             }
         }]
     },

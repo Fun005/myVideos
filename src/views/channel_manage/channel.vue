@@ -4,8 +4,8 @@
       <span>我的频道</span>
       <el-button round @click="()=>isEdit = !isEdit">编辑</el-button>
     </div>
-    <div v-if="!isEdit">
-      <el-form ref="form" :rules="rules" label-width="150px">
+    <div v-show="!isEdit">
+      <el-form :rules="rules" label-width="150px">
         <el-form-item label="频道名称：" prop="req">
           <span>频道名称</span>
         </el-form-item>
@@ -30,7 +30,7 @@
       </el-form>
 
     </div>
-    <div v-if="isEdit">
+    <div v-show="isEdit">
       <el-form ref="channelForm" :rules="rules" :model="channelForm" label-width="150px">
         <el-form-item porp="channelName" label="频道名称：">
           <el-input v-model="channelForm.channelName"/><span class="text-tip">频道名称只允许3-10个字符的汉字、字母、数字、下划线</span>
@@ -48,7 +48,7 @@
             <el-radio :label="2">女生</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item porp="banner" label="频道Banner：">
+        <el-form-item porp="req" label="频道Banner：">
           <el-upload
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
@@ -61,7 +61,7 @@
           <span>规定分辨率为1340x335；支持jpg、jpeg、png；
           大小不超过5M。</span>
         </el-form-item>
-        <el-form-item porp="avatar" label="频道头像：">
+        <el-form-item porp="req" label="频道头像：">
           <el-upload
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
@@ -147,7 +147,7 @@ export default {
         }
     }
     .el-form {
-      .el-input {
+      .el-input,.el-textarea {
         width: 300px;
       }
       .text-tip {
